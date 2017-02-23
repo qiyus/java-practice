@@ -10,8 +10,8 @@ import java.util.Stack;
  * 带类型参数的类
  */
 public class Generic<T> {
-    private Stack<String> stack = new Stack<>();
-    private T arg;
+    private final Stack<String> stack = new Stack<>();
+    private final T arg;
 
     public Generic(T arg) {
         this.arg = arg;

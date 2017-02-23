@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 /**
  * Created by Vigor on 2017/2/23.
+ * 测试泛型通配符。
  */
 public class BuilderTest {
     @Test

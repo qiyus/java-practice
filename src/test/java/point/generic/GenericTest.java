@@ -3,11 +3,9 @@ package point.generic;
 import org.junit.Test;
 
 import java.util.Collection;
-import java.util.Objects;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Vigor on 2017/2/23.
