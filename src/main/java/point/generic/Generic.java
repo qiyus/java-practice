@@ -47,14 +47,14 @@ public class Generic<T> {
      * String.class类型代表 Class<String>
      * @param c Class
      * @param n Class对象数
-     * @param <E>
+     * @param <C>
      * @return
      */
-    public <E> Collection<E> makeList(Class<E> c, int n) {
-        Collection<E> collection = new ArrayList<>();
+    public <C> Collection<C> makeList(Class<C> c, int n) {
+        Collection<C> collection = new ArrayList<>();
         try {
             for (int i = 0; i < n; i++) {
-                E item = c.newInstance();
+                C item = c.newInstance();
                 collection.add(item);
             }
         }

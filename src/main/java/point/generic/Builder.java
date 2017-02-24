@@ -2,7 +2,7 @@ package point.generic;
 
 /**
  * Created by Vigor on 2017/2/23.
- * 泛型的通配符使用
+ * 泛型的通配符使用,泛型不是协变的。
  */
 public class Builder {
     private String result = "";
