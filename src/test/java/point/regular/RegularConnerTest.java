@@ -79,6 +79,11 @@ public class RegularConnerTest {
 
         // 圆括号和空白符号/s,可以利用 oro api 取值。
         assertThat(conner.matches("June 26, 1967", "([A-Za-z]+)\\s+[0-9]{1,2},\\s*[0-9]{4}"), is(true));
+
+        // 电话号码检查
+        assertThat(conner.matches("13849949984", "^((13[0-9])|(15[0-3,5-9]))[0-9]{8}$"), is(true));
+        assertThat(conner.matches("15649949984", "^((13\\d)|(15[^4, \\D]))\\d{8}$"), is(true));
+        assertThat(conner.matches("15449949984", "^((13[0-9])|(15[0-3,5-9]))\\d{8}$"), is(false));
     }
 
     @Test
