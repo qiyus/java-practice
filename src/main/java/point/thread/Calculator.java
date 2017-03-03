@@ -14,6 +14,7 @@ package point.thread;
  */
 public class Calculator implements Runnable {
     private final int number;
+    private static final int MAX = 9;
 
     private Calculator(int number) {
         this.number = number;
@@ -27,16 +28,18 @@ public class Calculator implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // 输出计算结果。
             System.out.printf("%s(%d): %d * %d = %d\n", Thread.currentThread().getName(),
                     Thread.currentThread().getPriority(), i, number, i * number);
         }
     }
 
     public static void main(String[] args) {
-        Thread threads[] = new Thread[10];
+        Thread threads[] = new Thread[MAX];
         Thread.State state = Thread.State.NEW;
 
-        for (int i = 0; i < 10; i++) {
+        // 初始化线程。
+        for (int i = 0; i < MAX; i++) {
             threads[i] = new Thread(new Calculator(i + 1));
             if (i % 2 == 0) {
                 threads[i].setPriority(Thread.MAX_PRIORITY);
@@ -45,18 +48,20 @@ public class Calculator implements Runnable {
             }
         }
 
-        for (int i = 0; i < 10; i++) {
+        // 启动线程。
+        for (int i = 0; i < MAX; i++) {
             threads[i].start();
         }
 
+        // 查询线程9的状态并打印至线程结束。
         while (true) {
-            Thread.State temp = threads[9].getState();
+            Thread.State temp = threads[MAX-1].getState();
             if (!temp.equals(state)) {
-                System.out.printf("%s: %s ==> %s\n", threads[9].getName(), state, temp);
+                System.out.printf("%s: %s ==> %s\n", threads[MAX-1].getName(), state, temp);
                 state = temp;
             }
 
-            if (threads[9].getState().equals(Thread.State.TERMINATED)) {
+            if (temp.equals(Thread.State.TERMINATED)) {
                 break;
             }
         }
