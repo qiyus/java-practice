@@ -2,8 +2,8 @@ package point.thread;
 
 /**
  * Created by Vigor on 2017/3/3.
- * 多线程练习2
- * 1，线程的中断。
+ * 并发编程练习
+ * 线程管理（三）线程的中断
  */
 public class PrimeGenerator extends Thread{
 
