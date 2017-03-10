@@ -23,7 +23,7 @@ public class CleanerTask extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
+
             if (deque.size() > 5) {
                 System.out.println(Thread.currentThread().getName());
                 deque.removeLast();
