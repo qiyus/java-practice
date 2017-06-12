@@ -116,4 +116,11 @@ public class RegularConnerTest {
         assertThat(conner.reset("1234kdkks", "[0-9]+"), is("567"));
         assertThat(conner.reset("abcd333", "[a-z]+"), is(""));
     }
+
+    @Test
+    public void replaceOneA() throws Exception {
+        assertThat(conner.replaceOneA("abcd/A", "([^/]|^)/A"), is("abcdnew"));
+        assertThat(conner.replaceOneA("abcd//A", "([^/]|^)/A"), is("abcd//A"));
+        assertThat(conner.replaceOneA("/A", "([^/]|^)/A"), is("new"));
+    }
 }
