@@ -3,6 +3,7 @@ package point.thread;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -20,7 +21,8 @@ public class PrintQueue {
 
     public void printJob() {
         lock.lock();
-        Long duration=(long)(Math.random()*10000);
+        Random random = new Random();
+        Long duration = random.nextLong();
         Date job = queue.poll();
         if (job == null) {
             System.out.println("print finish!");
