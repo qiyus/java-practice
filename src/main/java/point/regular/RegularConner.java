@@ -154,4 +154,8 @@ public class RegularConner {
         return result;
     }
 
+    public String replaceOneA(String s, String regex) {
+        return s.replaceAll(regex, "$1new");
+    }
+
 }
