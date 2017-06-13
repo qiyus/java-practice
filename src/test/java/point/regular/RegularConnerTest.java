@@ -119,8 +119,12 @@ public class RegularConnerTest {
 
     @Test
     public void replaceOneA() throws Exception {
-        assertThat(conner.replaceOneA("abcd/A", "([^/]|^)/A"), is("abcdnew"));
-        assertThat(conner.replaceOneA("abcd//A", "([^/]|^)/A"), is("abcd//A"));
-        assertThat(conner.replaceOneA("/A", "([^/]|^)/A"), is("new"));
+        assertThat(conner.replaceOneA("abcd/A", "([^/]|^)/A", "$1new"), is("abcdnew"));
+        assertThat(conner.replaceOneA("abcd//A", "([^/]|^)/A", "$1new"), is("abcd//A"));
+        assertThat(conner.replaceOneA("/A", "([^/]|^)/A", "$1new"), is("new"));
+        assertThat(conner.replaceOneA("abcd/A", "(?<!/)/A", "new"), is("abcdnew"));
+        assertThat(conner.replaceOneA("abcd//A", "(?<!/)/A", "new"), is("abcd//A"));
+        assertThat(conner.replaceOneA("/A", "(?<!/)/A", "new"), is("new"));
+
     }
 }
